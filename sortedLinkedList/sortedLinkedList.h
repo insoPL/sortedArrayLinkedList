@@ -2,6 +2,7 @@
 #define AISDPROJEKT_SORTEDLINKEDLIST_H
 
 #include <cstddef>
+#include "../Iterator.h"
 
 template <typename T>
 class LinkedListIterator;

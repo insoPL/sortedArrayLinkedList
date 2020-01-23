@@ -1,3 +1,4 @@
+#include <unordered_set>
 #include "LinkedListIterator.h"
 
 template<typename T>
@@ -18,16 +19,21 @@ LinkedListIterator<T> &LinkedListIterator<T>::operator--() {
 }
 
 template<typename T>
-bool LinkedListIterator<T>::operator!=(const LinkedListIterator &other) {
-    return node!=other.node;
+bool LinkedListIterator<T>::operator!=(const Iterator<T>& other){
+    return node->data != *other;
 }
 
 template<typename T>
-bool LinkedListIterator<T>::operator==(const LinkedListIterator &other) {
-    return node==other.node;
+bool LinkedListIterator<T>::operator==(const Iterator<T>& other) {
+    return node->data == *other;
 }
 
 template<typename T>
 T LinkedListIterator<T>::operator*() {
+    return node->data;
+}
+
+template<typename T>
+T LinkedListIterator<T>::operator*() const {
     return node->data;
 }

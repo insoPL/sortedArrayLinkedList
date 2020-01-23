@@ -2,19 +2,22 @@
 #define AISDPROJEKT_LINKEDLISTITERATOR_H
 
 #include "sortedLinkedList.h"
+#include "../Iterator.h"
 
 template<typename T>
-class LinkedListIterator
+class LinkedListIterator : public Iterator<T>
 {
     friend SortedLinkedList<T>;
     typename SortedLinkedList<T>::Node* node;
     LinkedListIterator(typename SortedLinkedList<T>::Node* _node);
 public:
-    LinkedListIterator<T> & operator++();
-    LinkedListIterator& operator--();
-    bool operator!=(const LinkedListIterator& other);
-    bool operator==(const LinkedListIterator& other);
+    LinkedListIterator<T>& operator--();
+    LinkedListIterator<T>& operator++();
+    bool operator!=(const Iterator<T>& other);
+    bool operator==(const Iterator<T>& other);
     T operator*();
+    T operator*() const ;
+
 };
 
 #endif //AISDPROJEKT_LINKEDLISTITERATOR_H

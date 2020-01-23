@@ -11,6 +11,19 @@ int main() {
 
     for(int x : list) cout<<x<<' ';
 
+    LinkedListIterator<int> abc = list.begin();
+    LinkedListIterator<int> end = list.end();
+
+    Iterator<int>* ii = &abc;
+
+    while (*ii != end){
+        ++(*ii);
+        cout<<**ii;
+
+
+    }
+
+
     std::cout << "Hello, World!" << std::endl;
     return 0;
 }
