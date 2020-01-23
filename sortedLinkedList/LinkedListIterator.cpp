@@ -13,27 +13,27 @@ LinkedListIterator<T>& LinkedListIterator<T>::operator++() {
 }
 
 template<typename T>
-LinkedListIterator<T> &LinkedListIterator<T>::operator--() {
+LinkedListIterator<T>& LinkedListIterator<T>::operator--() {
     node = node->prev;
     return *this;
 }
 
 template<typename T>
 bool LinkedListIterator<T>::operator!=(const Iterator<T>& other){
-    return node->data != *other;
+    return &(**this) != &(*other);
 }
 
 template<typename T>
 bool LinkedListIterator<T>::operator==(const Iterator<T>& other) {
-    return node->data == *other;
+    return &(**this) == &(*other);
 }
 
 template<typename T>
-T LinkedListIterator<T>::operator*() {
-    return node->data;
+T& LinkedListIterator<T>::operator*() {
+    return *(node->data);
 }
 
 template<typename T>
-T LinkedListIterator<T>::operator*() const {
-    return node->data;
+T& LinkedListIterator<T>::operator*() const {
+    return *(node->data);
 }

@@ -15,8 +15,8 @@ public:
     LinkedListIterator<T>& operator++();
     bool operator!=(const Iterator<T>& other);
     bool operator==(const Iterator<T>& other);
-    T operator*();
-    T operator*() const ;
+    T& operator* ();
+    T& operator*() const ;
 
 };
 

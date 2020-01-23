@@ -3,4 +3,4 @@ project(AisdProjekt)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(AisdProjekt main.cpp)
+add_executable(AisdProjekt main.cpp SortedList.h)

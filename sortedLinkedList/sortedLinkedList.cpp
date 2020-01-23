@@ -3,7 +3,7 @@
 #include <iostream>
 
 template<typename T>
-SortedLinkedList<T>::Node::Node(T m_data, Node* m_prev, Node* m_next)
+SortedLinkedList<T>::Node::Node(T* m_data, Node* m_prev, Node* m_next)
 {
     data = m_data;
     prev = m_prev;
@@ -13,7 +13,7 @@ SortedLinkedList<T>::Node::Node(T m_data, Node* m_prev, Node* m_next)
 
 template<typename T>
 SortedLinkedList<T>::SortedLinkedList() {
-    guard = new Node(0);
+    guard = new Node();
     guard->prev = guard;
     guard->next = guard;
     list_size=0;
@@ -30,23 +30,22 @@ SortedLinkedList<T>::~SortedLinkedList() {
 template<typename T>
 void SortedLinkedList<T>::push(T _data)
 {
-    list_size++;
-
     Node* target_node = find_where_should_be(_data).node;
-    Node* new_node = new Node(_data, target_node->prev, target_node);
+    Node* new_node = new Node(new T(_data), target_node->prev, target_node);
     new_node->prev->next = new_node;
     new_node->next->prev = new_node;
+    list_size++;
 }
 
 template<typename T>
 void SortedLinkedList<T>::push(T&& _data)
 {
-    list_size++;
-
     Node* target_node = find_where_should_be(_data).node;
     Node* new_node = new Node(std::forward<T>(_data), target_node->prev, target_node);
     new_node->prev->next = new_node;
     new_node->next->prev = new_node;
+    list_size++;
+
 }
 
 template<typename T>
@@ -55,7 +54,7 @@ void SortedLinkedList<T>::push_back(T _data)
     list_size++;
 
     Node* target_node = end().node;
-    Node* new_node = new Node(_data, target_node->prev, target_node);
+    Node* new_node = new Node(new T(_data), target_node->prev, target_node);
     new_node->prev->next = new_node;
     new_node->next->prev = new_node;
 }
@@ -100,6 +99,7 @@ T SortedLinkedList<T>::pop()
 template<typename T>
 LinkedListIterator<T> SortedLinkedList<T>::find_where_should_be(T x)
 {
+    if (size()==0) return LinkedListIterator<T>(guard);
     for(auto it = begin();it != end();++it)
     {
         if(*it >= x) return it;

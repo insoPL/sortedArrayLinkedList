@@ -15,12 +15,9 @@ int main() {
     LinkedListIterator<int> end = list.end();
 
     Iterator<int>* ii = &abc;
-
     while (*ii != end){
         ++(*ii);
-        cout<<**ii;
-
-
+        cout<<ii;
     }
 
 

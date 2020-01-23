@@ -3,20 +3,21 @@
 
 #include <cstddef>
 #include "../Iterator.h"
+#include "../SortedList.h"
 
 template <typename T>
 class LinkedListIterator;
 
 template<typename T>
-class SortedLinkedList
+class SortedLinkedList : public SortedList<T>
 {
     friend LinkedListIterator<T>;
 
     struct Node{       // Zagnieżdżona klasa węzła
-        T data;            // Element przechowywany przez węzeł listy
+        T* data;            // Element przechowywany przez węzeł listy
         Node* prev;     // Wskaźnik do poprzedniego węzła
         Node* next;     // Wskaźnik do kolejnego węzła
-        Node(T m_data, Node* m_prev=nullptr, Node* m_next=nullptr);
+        Node(T* m_data= nullptr, Node* m_prev=nullptr, Node* m_next=nullptr);
     };
 
     LinkedListIterator<T> find_where_should_be(T searched_value);

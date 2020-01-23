@@ -4,12 +4,14 @@
 template<typename T>
 class Iterator {
 public:
-    virtual Iterator<T>& operator--() = 0;
-    virtual T operator*() = 0;
-    virtual T operator*() const = 0;
+    //virtual void push(T) = 0;
+
+    virtual T& operator*() = 0;
+    virtual T& operator*() const = 0;
     virtual Iterator<T>& operator++() = 0;
-    virtual bool operator!=(const Iterator<T>& other) = 0;
-    virtual bool operator==(const Iterator& other) = 0;
+    virtual Iterator<T>& operator--() = 0;
+    virtual bool operator!=(const Iterator<T>&) = 0;
+    virtual bool operator==(const Iterator<T>&) = 0;
 };
 
 
