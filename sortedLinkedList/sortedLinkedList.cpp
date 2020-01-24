@@ -10,7 +10,6 @@ SortedLinkedList<T>::Node::Node(T* m_data, Node* m_prev, Node* m_next)
     next = m_next;
 }
 
-
 template<typename T>
 SortedLinkedList<T>::SortedLinkedList() {
     guard = new Node();
@@ -30,22 +29,13 @@ SortedLinkedList<T>::~SortedLinkedList() {
 template<typename T>
 void SortedLinkedList<T>::push(T _data)
 {
-    Node* target_node = find_where_should_be(_data).node;
+    Node* target_node = find(_data).node;
+    if (target_node == nullptr) target_node = guard;
+
     Node* new_node = new Node(new T(_data), target_node->prev, target_node);
     new_node->prev->next = new_node;
     new_node->next->prev = new_node;
     list_size++;
-}
-
-template<typename T>
-void SortedLinkedList<T>::push(T&& _data)
-{
-    Node* target_node = find_where_should_be(_data).node;
-    Node* new_node = new Node(std::forward<T>(_data), target_node->prev, target_node);
-    new_node->prev->next = new_node;
-    new_node->next->prev = new_node;
-    list_size++;
-
 }
 
 template<typename T>
@@ -97,24 +87,13 @@ T SortedLinkedList<T>::pop()
 }
 
 template<typename T>
-LinkedListIterator<T> SortedLinkedList<T>::find_where_should_be(T x)
+LinkedListIterator<T> SortedLinkedList<T>::find(T x)
 {
-    if (size()==0) return LinkedListIterator<T>(guard);
     for(auto it = begin();it != end();++it)
     {
         if(*it >= x) return it;
     }
-    return end();
-}
-
-template<typename T>
-LinkedListIterator<T> SortedLinkedList<T>::find(T x)
-{
-    LinkedListIterator<T> it = find_where_should_be(x);
-    if(*it == x) return it;
-
-    LinkedListIterator<T> empty_it = LinkedListIterator<T>(nullptr);
-    return empty_it;
+    return LinkedListIterator<T>(nullptr);
 }
 
 template<typename T>

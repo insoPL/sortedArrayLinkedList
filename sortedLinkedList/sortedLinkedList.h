@@ -20,8 +20,6 @@ class SortedLinkedList : public SortedList<T>
         Node(T* m_data= nullptr, Node* m_prev=nullptr, Node* m_next=nullptr);
     };
 
-    LinkedListIterator<T> find_where_should_be(T searched_value);
-
     Node* guard;
     size_t list_size;
 
@@ -35,7 +33,6 @@ public:
     size_t size();
     void push_back(T);
     void push(T);
-    void push(T&&);
     void print();
     LinkedListIterator<T> find(T x);
     LinkedListIterator<T> erase(LinkedListIterator<T> i);

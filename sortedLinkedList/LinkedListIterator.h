@@ -11,8 +11,8 @@ class LinkedListIterator : public Iterator<T>
     typename SortedLinkedList<T>::Node* node;
     LinkedListIterator(typename SortedLinkedList<T>::Node* _node);
 public:
-    LinkedListIterator<T>& operator--();
     LinkedListIterator<T>& operator++();
+    LinkedListIterator<T>& operator--();
     bool operator!=(const Iterator<T>& other);
     bool operator==(const Iterator<T>& other);
     T& operator* ();
