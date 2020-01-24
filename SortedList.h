@@ -6,7 +6,7 @@ class SortedList {
 public:
     virtual void push(T) = 0;
     virtual void print() = 0;
-    virtual void push_back(T) = 0;
+    //virtual void push_back(T) = 0;
     virtual T pop() = 0;
     virtual void remove(T x) = 0;
     virtual void unique() = 0;

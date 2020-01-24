@@ -8,11 +8,18 @@ int main() {
     auto list = SortedArrayLinkedList<int>();
     for(int x = 0; x<20 ; x++)
         list.push(x);
-//
+
+    list.push(5);
+
 //    for(int x = 0; x<10 ; x++)
-//        list.remove(5);
-//
-//    for(int x : list) cout<<x<<' ';
+    list.remove(5);
+
+
+    for(int x : list) cout<<x<<' '<<endl;
+
+    cout<< list.pop()<<endl<<endl;
+
+    list.print();
 //
 //    SortedList<int>* lista = &list;
 //
