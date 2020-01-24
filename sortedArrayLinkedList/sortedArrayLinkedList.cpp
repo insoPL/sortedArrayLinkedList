@@ -79,7 +79,6 @@ void SortedArrayLinkedList<T>::print(){
 
 template<typename T>
 void SortedArrayLinkedList<T>::erase(Stage* st, int it){
-
     for(int i = it+1; i<(st->array_size); i++){
         st->array[i-1] = st->array[i];
     }
@@ -114,6 +113,24 @@ void SortedArrayLinkedList<T>::remove(T x){
 
 }
 
+template<typename T>
+void SortedArrayLinkedList<T>::unique(){
+    ArrayLinkedListIterator<T> pos_start = begin();
+    T last_item = *pos_start;
+    ++pos_start;
+    while(pos_start!=end())
+    {
+        if(*pos_start==last_item){
+            T foo = *pos_start;
+            remove(foo);
+            push(foo);
+            pos_start = begin();
+            last_item = *pos_start;
+        }
+        else last_item = *pos_start;
+        ++pos_start;
+    }
+}
 
 template<typename T>
 ArrayLinkedListIterator<T> SortedArrayLinkedList<T>::begin(){

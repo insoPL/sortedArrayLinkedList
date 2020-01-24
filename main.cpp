@@ -9,6 +9,9 @@ int main() {
     for(int x = 0; x<20 ; x++)
         list.push(x);
 
+    for(int x = 0; x<5 ; x++)
+        list.push(9);
+
     list.push(5);
 
 //    for(int x = 0; x<10 ; x++)
@@ -18,6 +21,8 @@ int main() {
     for(int x : list) cout<<x<<' '<<endl;
 
     cout<< list.pop()<<endl<<endl;
+
+    list.unique();
 
     list.print();
 //

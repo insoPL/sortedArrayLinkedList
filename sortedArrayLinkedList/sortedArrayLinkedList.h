@@ -29,6 +29,7 @@ class SortedArrayLinkedList :SortedList<T>{
     int find_stage(T);
     void erase(Stage* st, int it);
 public:
+    void unique();
     SortedArrayLinkedList<T>();
     void push(T);
     size_t size();
