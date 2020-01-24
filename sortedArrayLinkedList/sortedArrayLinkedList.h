@@ -9,7 +9,7 @@ template <typename T>
 class ArrayLinkedListIterator;
 
 template<typename T>
-class SortedArrayLinkedList :SortedList<T>{
+class SortedArrayLinkedList : public SortedList<T>{
 #define STAGE_SIZE 16
 #define MAX_STAGES 100
 

@@ -14,22 +14,18 @@ int main() {
 
     list.push(5);
 
-//    for(int x = 0; x<10 ; x++)
     list.remove(5);
 
-
+    cout<<"print list using iterators:"<<endl;
     for(int x : list) cout<<x<<' '<<endl;
 
+    cout<<"pop single element"<<endl;
     cout<< list.pop()<<endl<<endl;
 
-    list.unique();
+    SortedList<int>* lista = &list;
 
-    list.print();
-//
-//    SortedList<int>* lista = &list;
-//
-//    lista->print();
+    cout<<"print using OOP:"<<endl;
+    lista->print();
 
-    std::cout << "Hello, World!" << std::endl;
     return 0;
 }
