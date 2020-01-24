@@ -4,14 +4,14 @@
 #include "sortedArrayList.h"
 
 template <typename T>
-class ArrayLinkedListIterator : public Iterator<T>
+class ArrayListIterator : public Iterator<T>
 {
     friend  SortedArrayList<T>;
     T* array_pos;
-    ArrayLinkedListIterator(T* _array);
+    ArrayListIterator(T* _array);
 public:
-    ArrayLinkedListIterator& operator++();
-    ArrayLinkedListIterator& operator--();
+    ArrayListIterator& operator++();
+    ArrayListIterator& operator--();
     bool operator!=(const Iterator<T>& other);
     bool operator==(const Iterator<T>& other);
     T& operator*();

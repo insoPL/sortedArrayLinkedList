@@ -1,5 +1,5 @@
 #include "sortedArrayList.h"
-#include "ArrayLinkedListIterator.cpp"
+#include "ArrayListIterator.cpp"
 #include <iostream>
 #include <math.h>
 
@@ -37,7 +37,7 @@ SortedArrayList<T>::~SortedArrayList(){
 
 
 template<typename T>
-ArrayLinkedListIterator<T> SortedArrayList<T>::find(T searched_value){
+ArrayListIterator<T> SortedArrayList<T>::find(T searched_value){
     if(searched_value<=data_array[0]) return begin();
     else if(searched_value>data_array[size()-1]) return end();
 
@@ -51,8 +51,8 @@ ArrayLinkedListIterator<T> SortedArrayList<T>::find(T searched_value){
         else min_p += (max_p-min_p+1)/2;
     }while(min_p!=max_p);
 
-    if (data_array[min_p] != searched_value) ArrayLinkedListIterator<T>(nullptr);
-    return ArrayLinkedListIterator<T> (&data_array[min_p]);
+    if (data_array[min_p] != searched_value) ArrayListIterator<T>(nullptr);
+    return ArrayListIterator<T> (&data_array[min_p]);
 }
 
 template<typename T>
@@ -67,7 +67,6 @@ void SortedArrayList<T>::print()
         std::cout<<it<<std::endl;
     }
 }
-
 
 template<typename T>
 void SortedArrayList<T>::resize()
@@ -85,8 +84,8 @@ void SortedArrayList<T>::resize()
 template<typename T>
 void SortedArrayList<T>::push(T x) {
     if (size()>=capacity()) resize();
-    ArrayLinkedListIterator<T> il = end();
-    ArrayLinkedListIterator<T> ir = end();
+    ArrayListIterator<T> il = end();
+    ArrayListIterator<T> ir = end();
     --il;
 
     while(x<*il)
@@ -103,7 +102,7 @@ template<typename T>
 void SortedArrayList<T>::push_back(T x) {
     if (size()>=capacity()) resize();
 
-    ArrayLinkedListIterator<T> iter = end();
+    ArrayListIterator<T> iter = end();
 
     T bar = x;
     while(iter != end())
@@ -123,9 +122,9 @@ void SortedArrayList<T>::remove(T x){
      * zdecydowalem sie uzyc binary search zeby zoptymalizowac scenariusz usuwajacy wiele obiektow tej samej wartosci
     */
 
-    ArrayLinkedListIterator<T> start_pos = find(x);
-    if (start_pos == ArrayLinkedListIterator<T>(nullptr)) return;
-    ArrayLinkedListIterator<T> end_pos = start_pos;
+    ArrayListIterator<T> start_pos = find(x);
+    if (start_pos == ArrayListIterator<T>(nullptr)) return;
+    ArrayListIterator<T> end_pos = start_pos;
     while(start_pos != end() && x == *end_pos) ++end_pos;
     remove_pos(start_pos, end_pos);
 }
@@ -138,14 +137,14 @@ T SortedArrayList<T>::pop() {
 }
 
 template<typename T>
-ArrayLinkedListIterator<T> SortedArrayList<T>::erase(ArrayLinkedListIterator<T> i) {
+ArrayListIterator<T> SortedArrayList<T>::erase(ArrayListIterator<T> i) {
     auto b = i;
     remove_pos(i, ++b);
     return i;
 }
 
 template<typename T>
-void SortedArrayList<T>::remove_pos(ArrayLinkedListIterator<T> pos_start, ArrayLinkedListIterator<T> pos_end) {
+void SortedArrayList<T>::remove_pos(ArrayListIterator<T> pos_start, ArrayListIterator<T> pos_end) {
     while(pos_end != end()){
         *pos_start=*pos_end;
         ++pos_start;
@@ -172,15 +171,15 @@ void SortedArrayList<T>::unique(){
 }
 
 template<typename T>
-ArrayLinkedListIterator<T> SortedArrayList<T>::begin()
+ArrayListIterator<T> SortedArrayList<T>::begin()
 {
-    return ArrayLinkedListIterator<T> (data_array);
+    return ArrayListIterator<T> (data_array);
 }
 
 template<typename T>
-ArrayLinkedListIterator<T> SortedArrayList<T>::end()
+ArrayListIterator<T> SortedArrayList<T>::end()
 {
-    return ArrayLinkedListIterator<T> (&data_array[size()]);
+    return ArrayListIterator<T> (&data_array[size()]);
 }
 
 template<typename T>
@@ -188,11 +187,11 @@ SortedArrayList<T> SortedArrayList<T>::merge(SortedArrayList& a, SortedArrayList
 {
     SortedArrayList ret_list = SortedArrayList();
 
-    ArrayLinkedListIterator<T>* not_yet_empty_list_iterator;
+    ArrayListIterator<T>* not_yet_empty_list_iterator;
     SortedArrayList* not_yet_empty_list;
 
-    ArrayLinkedListIterator<T> ia = a.begin();
-    ArrayLinkedListIterator<T> ib = b.begin();
+    ArrayListIterator<T> ia = a.begin();
+    ArrayListIterator<T> ib = b.begin();
     while(true)
     {
         if(ia==a.end())

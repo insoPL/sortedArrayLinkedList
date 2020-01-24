@@ -6,7 +6,7 @@
 #include <cstddef>
 
 template <typename T>
-class ArrayLinkedListIterator;
+class ArrayListIterator;
 
 template<typename T>
 class SortedArrayList : public SortedList<T>
